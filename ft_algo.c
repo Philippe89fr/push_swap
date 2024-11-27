@@ -6,7 +6,7 @@
 /*   By: vincent <vincent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 12:54:11 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/25 17:24:31 by vincent          ###   ########.fr       */
+/*   Updated: 2024/11/26 20:01:25 by vincent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ void ft_indexing(t_list **lst)
 {
     t_list *current;
     t_list *current2;
-    int tot;
+    double tot;
+    double size;
 
     current = *lst;
     current2 = *lst;
     tot = 1;
+    size = ft_lstsize(*lst);
     while (current)
     {
         while (current2)
@@ -30,6 +32,7 @@ void ft_indexing(t_list **lst)
         current2 = current2->next;
         }
         current->index = tot;
+        current->decile = tot / size;
         tot = 1;
         current2 = *lst;
         current = current->next;
@@ -136,7 +139,7 @@ void ft_algo(t_list **lst, t_list **lst1)
             printf("lstB\n");
             ft_print_lst(currentB);
         } 
-        else // sinon on balance en haut et on continue
+        else // sinon on balance en haut et on continue.. On peut p-e trouver plus efficace
         {
             ft_rotate(&current);
             printf("RA\n");
@@ -149,30 +152,42 @@ void ft_algo(t_list **lst, t_list **lst1)
     ft_print_lst(currentB);
     while (!ft_check_ifdone(current) && !ft_check_ifdoneB(currentB)) // DOUBLE ATTACK!!
     {
+        if ((current->decile >= 0.3) && (currentB->decile <= 0.55)) // On pousse les plus gros vers le haut et vis versa
+        {
+            ft_rotate(&current);
+            printf("RR\n");
+            ft_print_lst(current);
+        } 
         if ((current->content > current->next->content) && (currentB->content < currentB->next->content)) // Double tri. 
         {
             ft_swap(&current);
             ft_swap(&currentB);
             printf("SS\n");
-            ft_print_lst(current);
+            //ft_print_lst(current);
         } 
         else
         {
             ft_reverse(&current);
             ft_rotate(&currentB);
-            printf("RR\n");
-            ft_print_lst(current);
-            ft_print_lst(currentB);
+            printf("RRR\n");
+           // ft_print_lst(current);
+           // ft_print_lst(currentB);
         } 
     }
     printf("POST ALGO, lst:\n");
     ft_print_lst(current);
     printf("POST ALGO, lst1:\n");
     ft_print_lst(currentB);
-    
     while (!ft_check_ifdone(current))
     {
-        if ((current->content > current->next->content)) // Single tri. 
+        if ((current->decile >= 0.4)) // On pousse les plus gros vers le haut 
+        {
+            ft_rotate(&current);
+            printf("RA\n");
+            ft_print_lst(current);
+        } 
+
+        else if ((current->content > current->next->content)) // Single tri. 
         {
             ft_swap(&current);
             printf("SA\n");
@@ -183,6 +198,32 @@ void ft_algo(t_list **lst, t_list **lst1)
             ft_reverse(&current);
             printf("RA\n");
             ft_print_lst(current);
+        } 
+    }
+    printf("POST ALGO, lst:\n");
+    ft_print_lst(current);
+    printf("POST ALGO, lst1:\n");
+    ft_print_lst(currentB); 
+        while (!ft_check_ifdone(currentB))
+    {
+        if ((currentB->decile <= 0.70))  // On pousse les plus petits vers le haut
+        {
+            ft_rotate(&currentB);
+            printf("RB>>\n");
+            ft_print_lst(currentB);
+        } 
+
+        else if ((current->content < current->next->content)) // Single tri. 
+        {
+            ft_swap(&currentB);
+            printf("SB>>\n");
+            ft_print_lst_decile(currentB);
+        } 
+        else
+        {
+            ft_reverse(&currentB);
+            printf("RB>>\n");
+            ft_print_lst(currentB);
         } 
     }
     printf("POST ALGO, lst:\n");

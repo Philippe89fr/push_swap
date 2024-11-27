@@ -6,7 +6,7 @@
 /*   By: vincent <vincent@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:44:02 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/25 17:23:49 by vincent          ###   ########.fr       */
+/*   Updated: 2024/11/26 18:38:03 by vincent          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ int main(int ac, char **av)
     printf("POST ALGO, lst1:\n");
     ft_print_lst(lst1);
     */
-    // ft_algo(&lst, &lst1);
+     ft_algo(&lst, &lst1);
     return (0);
 } 

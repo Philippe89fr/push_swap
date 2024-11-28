@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:14:21 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/28 11:14:31 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/28 12:03:23 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,34 +105,6 @@ int ft_pushallA(t_list **lst, t_list **lst1) // on balance tous vers b, en 4 gro
             res++;
         }
     }
-    /*
-    while (!ft_checkdecile(*lst, 0.6)) // envoie les > 0.4 && < 0.6 dans B
-    {
-        if ((*lst)->decile <= 0.6)
-        {
-            ft_push(lst, lst1);
-            res++;
-        }
-        else
-        {
-            ft_rotate(lst);
-            res++;
-        }
-    }
-    while (!ft_checkdecile(*lst, 0.8)) // envoie les > 0.6 && < 0.8 dans B
-    {
-        if ((*lst)->decile <= 0.8)
-        {
-            ft_push(lst, lst1);
-            res++;
-        }
-        else
-        {
-            ft_rotate(lst);
-            res++;
-        }
-    }
-    */
     while (*lst) // puis les 0.8+
     {
         ft_push(lst, lst1);
@@ -210,17 +182,19 @@ void ft_algo(t_list **lst, t_list **lst1)
     if (ft_check_ifdone(current))
         return; 
     printf("///GO\\\\n");
+    /*
     ft_print_lst_all(current, currentB);
     printf("La position du MAX est: %d\n", ft_position_vs_max(currentB));
-    printf("La position du MAX est: %d\n", ft_position_vs_sec_max(currentB));
-    count = count + ft_pushallA(&current, &currentB); // on balance tous les > med vers b
+    printf("La position du MAX est: %d\n", ft_position_vs_sec_max(currentB)); 
     printf("POST pushallA, lst:\n");
     ft_print_lst_all(current, currentB);
     printf("La position du MAX est: %d\n", ft_position_vs_max(currentB));
     printf("La position du SEC_MAX est: %d\n", ft_position_vs_sec_max(currentB));
     printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
+    */
+    count = count + ft_pushallA(&current, &currentB); // on balance tous les > med vers b
     count = count + ft_pushbackall(&current, &currentB);
-    ft_print_lst_all(current, currentB);
+    //ft_print_lst_all(current, currentB);
     printf("Le nombre d actions est de >> %d\n", count);
 
 /*

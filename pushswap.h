@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 13:03:06 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/27 12:19:51 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:41:49 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct s_list
 void    ft_print_lst_decile(t_list *lst);
 int ft_posinlist(t_list *lst, int val);
 void    ft_print_lst_all(t_list *lst, t_list *lst1);
+t_list *ft_lst_setup_a2(char **str);
 void ft_indexing(t_list **lst);
 int	ft_lstsize(t_list *lst);
 int ft_mediane(t_list *lst);

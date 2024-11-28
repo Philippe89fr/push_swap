@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:54:18 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/27 11:43:01 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/28 11:33:27 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,25 @@ t_list *ft_lst_setup_a(int ac, char **av)
 	while (i < ac)
 	{
 		ft_lstadd_back(&lst, ft_lstnew(atoi(av[i])));
+		i++;
+	}
+	return (lst);
+}
+
+t_list *ft_lst_setup_a2(char **str)
+{
+	t_list *lst;
+	int	j;
+	int i;
+
+	j = 0;
+	while (str[j])
+		j++;
+	i = 1;
+	lst = ft_lstnew(atoi(str[0]));
+	while (i < j)
+	{
+		ft_lstadd_back(&lst, ft_lstnew(atoi(str[i])));
 		i++;
 	}
 	return (lst);

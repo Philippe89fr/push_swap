@@ -19,7 +19,7 @@ void    ft_print_lst(t_list *lst)
     current = lst;
     while (current)
     {
-        printf("%d\n", current->content);
+        printf("La valeur est %d, l index est: %d et le decile: %lf\n", current->content, current->index, current->decile);
         current = current->next;
     }
 }
@@ -36,15 +36,24 @@ void    ft_print_lst_decile(t_list *lst)
     }
 }
 
-void    ft_print_lst_index(t_list *lst)
+void    ft_print_lst_all(t_list *lst, t_list *lst1)
 {
     t_list *current;
-
+    t_list *currentB;
+    
     current = lst;
+    currentB = lst1,
+    printf("List A, lst:\n");
     while (current)
     {
-        printf("La valeur est %d, l index est: %d et le decile: %lf\n", current->content, current->index, current->decile);
+        printf("La valeur est %d, l index est: %d et le decile: %.2f\n", current->content, current->index, current->decile);
         current = current->next;
+    }
+    printf("List B, lst:\n");
+    while (currentB)
+    {
+        printf("La valeur est %d, l index est: %d et le decile: %.1f\n", currentB->content, currentB->index, currentB->decile);
+        currentB = currentB->next;
     }
 }
 

@@ -3,116 +3,152 @@
 /*                                                        :::      ::::::::   */
 /*   ft_algo.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincent <vincent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 12:54:11 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/26 20:01:25 by vincent          ###   ########.fr       */
+/*   Created: 2024/11/27 11:45:24 by prambaud          #+#    #+#             */
+/*   Updated: 2024/11/27 14:33:56 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-void ft_indexing(t_list **lst)
+int ft_pushallB(t_list **lst, t_list **lst1) // on balance tous les > med vers b
 {
-    t_list *current;
-    t_list *current2;
-    double tot;
-    double size;
 
-    current = *lst;
-    current2 = *lst;
-    tot = 1;
-    size = ft_lstsize(*lst);
-    while (current)
+    int res;
+
+    res = 0;
+    while (*lst1) 
     {
-        while (current2)
-        {
-        if (current2->content < current->content)
-            tot++;
-        current2 = current2->next;
-        }
-        current->index = tot;
-        current->decile = tot / size;
-        tot = 1;
-        current2 = *lst;
-        current = current->next;
+        ft_push(lst1, lst);
+        res = res + 2;
     }
-}
-
-int ft_posinlist(t_list *lst, int val)
-{
-    t_list *current;
-    int tot;
-
-    current = lst;
-    tot = 0;
-    while (current)
+    while (!ft_check_ifdone(*lst)) 
     {
-        if (current->content < val)
-            tot++;
-        current = current->next;
-    }
-    return (tot); // nombre d élements plus petit que val
+        ft_rotate(lst);
+        res = res + 2;
+    }  
+    return (res);
 }
 
-int ft_mediane(t_list *lst)
+int ft_pushallA(t_list **lst, t_list **lst1) // on balance tous les > med vers b
 {
-    int i;
-    t_list  *current;
+    int med;
+    int res;
 
-    current = lst;
-    i = ft_lstsize(current);
-    while (current)
-    {
-        if ((i % 2 != 0) && ft_posinlist(lst, current->content) == (i / 2))
-            return (current->content); // lui et les plus petits representent 50%+ des elements au moins
-        if ((i % 2 == 0) && ft_posinlist(lst, current->content) == (i / 2) - 1)
-            return (current->content); // lui et les plus petits representent 50%+ des elements au moins
-        current = current->next;
-    }
-    return (0);
-}
-
-int ft_check_ifdone(t_list *lst)
-{
-    t_list *current;
-
-    current = lst;
-    while (current->next && (current->content < current->next->content))
-        current = current->next;
-    if (!current->next)
-        return (1);
-    return (0);
-}
-
-int ft_check_ifdoneB(t_list *lst)
-{
-    t_list *current;
-
-    current = lst;
-    while (current->next && (current->content > current->next->content))
-        current = current->next;
-    if (!current->next)
-        return (1);
-    return (0);
-}
-
-int ft_check_if_med(t_list *lst, int med) // check si tous les chiffres sont < med
-{
-    t_list *current;
-
-    if (!lst)
+    res = 0;
+    med = ft_mediane(*lst);
+    if (ft_check_ifdone(*lst))
         return (0);
-    current = lst;
-    while (current)
+    while (!ft_check_if_med(*lst, med) && *lst) 
     {
-        if (current->content > med)
-         return (0);
-        current = current->next;
+        if ((*lst)->content > med) // si sup a med on balance dans b
+        {
+            ft_push(lst, lst1); 
+            res++;
+        } 
+        else // sinon on balance en haut et on continue.. On peut p-e trouver plus efficace
+        {
+            ft_rotate(lst);
+            res++;
+        } 
+    } 
+    return (res);
+}
+
+int ft_double_tri(t_list **lst, t_list **lst1)
+{
+    int res;
+
+    res = 0;
+    while (!ft_check_ifdone(*lst) && !ft_check_ifdoneB(*lst1)) // DOUBLE ATTACK!!
+    {
+        if (((*lst)->decile >= 0.3) && ((*lst1)->decile <= 0.55)) // On pousse les plus gros vers le haut et vis versa
+        {
+            ft_rotate(lst);
+            ft_rotate(lst1);
+            res++;
+            // printf("RR\n");
+        } 
+        if (((*lst)->content > (*lst)->next->content) && ((*lst1)->content < (*lst1)->next->content)) // Double tri. 
+        {
+            ft_swap(lst);
+            ft_swap(lst1);
+            res++;
+            // printf("SS\n");
+            // ft_print_lst_all(current);
+        } 
+        else
+        {
+            ft_reverse(lst);
+            ft_reverse(lst1);
+            res++;
+           // printf("RRR\n");
+           // ft_print_lst_all(current);
+           // ft_print_lst_all(currentB);
+        } 
+    }    
+    return (res);
+}
+
+int ft_sorta(t_list **lst)
+{
+    int res;
+
+    res = 0;
+    while (!ft_check_ifdone(*lst))
+    {
+        if (((*lst)->decile >= 0.4)) // On pousse les plus gros vers le haut 
+        {
+            ft_rotate(lst);
+            printf("RA\n");
+            ft_print_lst((*lst));
+        } 
+
+        else if (((*lst)->content > (*lst)->next->content)) // Single tri. 
+        {
+            ft_swap(lst);
+            printf("SA\n");
+            ft_print_lst((*lst));
+        } 
+        else
+        {
+            ft_reverse(lst);
+            printf("RRA\n");
+            ft_print_lst((*lst));
+        } 
     }
-    if (!current)
-        return (1);
-    return (0);
+    return (res);
+}
+
+int ft_sortb(t_list **lst)
+{
+    int res;
+
+    res = 0;
+    while (!ft_check_ifdoneB(*lst))
+    {
+        if ((*lst)->decile <= 0.70) // On pousse les plus petits vers le haut 
+        {
+            ft_rotate(lst);
+            printf("RB\n");
+            ft_print_lst((*lst));
+        } 
+
+        else if (((*lst)->content > (*lst)->next->content)) // Single tri. 
+        {
+            ft_swap(lst);
+            printf("SB\n");
+            ft_print_lst((*lst));
+        } 
+        else
+        {
+            ft_reverse(lst);
+            printf("RRB\n");
+            ft_print_lst((*lst));
+        } 
+    }
+    return (res);
 }
 
 void ft_algo(t_list **lst, t_list **lst1)
@@ -120,114 +156,40 @@ void ft_algo(t_list **lst, t_list **lst1)
     int med;
     t_list *current;
     t_list *currentB;
+    int count;
 
-
+    count = 0;
     med = ft_mediane(*lst);
     current = *lst;
     currentB = *lst1;
     if (ft_check_ifdone(current))
         return; 
-    ft_print_lst(current);
-    printf("DEBUT\n");
-    while (!ft_check_if_med(current, med) && current) // on balance tous les > med vers b
-    {
-        if (current->content > med) // si sup a med on balance dans b
-        {
-            ft_push(&current, &currentB); 
-            printf("PA\n");
-            ft_print_lst(current);
-            printf("lstB\n");
-            ft_print_lst(currentB);
-        } 
-        else // sinon on balance en haut et on continue.. On peut p-e trouver plus efficace
-        {
-            ft_rotate(&current);
-            printf("RA\n");
-            ft_print_lst(current);
-        } 
-    } 
-    printf("POST ALGO, lst:\n");
-    ft_print_lst(current);
-    printf("POST ALGO, lst1:\n");
-    ft_print_lst(currentB);
-    while (!ft_check_ifdone(current) && !ft_check_ifdoneB(currentB)) // DOUBLE ATTACK!!
-    {
-        if ((current->decile >= 0.3) && (currentB->decile <= 0.55)) // On pousse les plus gros vers le haut et vis versa
-        {
-            ft_rotate(&current);
-            printf("RR\n");
-            ft_print_lst(current);
-        } 
-        if ((current->content > current->next->content) && (currentB->content < currentB->next->content)) // Double tri. 
-        {
-            ft_swap(&current);
-            ft_swap(&currentB);
-            printf("SS\n");
-            //ft_print_lst(current);
-        } 
-        else
-        {
-            ft_reverse(&current);
-            ft_rotate(&currentB);
-            printf("RRR\n");
-           // ft_print_lst(current);
-           // ft_print_lst(currentB);
-        } 
-    }
-    printf("POST ALGO, lst:\n");
-    ft_print_lst(current);
-    printf("POST ALGO, lst1:\n");
-    ft_print_lst(currentB);
-    while (!ft_check_ifdone(current))
-    {
-        if ((current->decile >= 0.4)) // On pousse les plus gros vers le haut 
-        {
-            ft_rotate(&current);
-            printf("RA\n");
-            ft_print_lst(current);
-        } 
+    ft_print_lst_all(current, currentB);
 
-        else if ((current->content > current->next->content)) // Single tri. 
-        {
-            ft_swap(&current);
-            printf("SA\n");
-            ft_print_lst(current);
-        } 
-        else
-        {
-            ft_reverse(&current);
-            printf("RA\n");
-            ft_print_lst(current);
-        } 
-    }
-    printf("POST ALGO, lst:\n");
-    ft_print_lst(current);
-    printf("POST ALGO, lst1:\n");
-    ft_print_lst(currentB); 
-        while (!ft_check_ifdone(currentB))
-    {
-        if ((currentB->decile <= 0.70))  // On pousse les plus petits vers le haut
-        {
-            ft_rotate(&currentB);
-            printf("RB>>\n");
-            ft_print_lst(currentB);
-        } 
+    count = count + ft_pushallA(&current, &currentB); // on balance tous les > med vers b
+    printf("POST pushallA, lst:\n");
+    ft_print_lst_all(current, currentB); 
+    printf("test:\n");
+    /*
+    ft_push(&currentB, &current);
+    ft_print_lst_all(current, currentB);*/
+    
+    count = count + ft_double_tri(&current, &currentB); // Double tri
+    printf("POST DOUBLE TRI, lst:\n");
+    ft_print_lst_all(current, currentB);
 
-        else if ((current->content < current->next->content)) // Single tri. 
-        {
-            ft_swap(&currentB);
-            printf("SB>>\n");
-            ft_print_lst_decile(currentB);
-        } 
-        else
-        {
-            ft_reverse(&currentB);
-            printf("RB>>\n");
-            ft_print_lst(currentB);
-        } 
-    }
-    printf("POST ALGO, lst:\n");
-    ft_print_lst(current);
-    printf("POST ALGO, lst1:\n");
-    ft_print_lst(currentB); 
+    count = count + ft_sorta(&current); // Tri A
+    printf("POST TRI A, lst:\n");
+    ft_print_lst_all(current, currentB);
+
+    count = count + ft_sortb(&currentB); // Tri B
+    printf("POST TRI A, lst:\n");
+    ft_print_lst_all(current, currentB);
+
+    count = count + ft_pushallB(&current, &currentB); // on balance tous back dans A
+    printf("POST pushback, lst:\n");
+    ft_print_lst_all(current, currentB); 
+
+    printf("Le nombre d actions est de >> %d\n", count);
+
 } 

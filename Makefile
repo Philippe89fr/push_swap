@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vincent <vincent@student.42.fr>            +#+  +:+       +#+         #
+#    By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/11 14:38:20 by prambaud          #+#    #+#              #
-#    Updated: 2024/11/23 12:59:36 by vincent          ###   ########.fr        #
+#    Updated: 2024/11/27 11:47:36 by prambaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC	= ft_algo.c \
 		ft_manip_lc.c \
 		ft_set_up_lc.c \
+		ft_algo_tools.c
 
 NAME	= pushswap.a
 

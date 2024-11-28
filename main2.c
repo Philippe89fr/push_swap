@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main copy.c                                        :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vincent <vincent@student.42.fr>            +#+  +:+       +#+        */
+/*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:44:02 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/26 18:38:03 by vincent          ###   ########.fr       */
+/*   Updated: 2024/11/27 12:27:18 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int ac, char **av)
 
     lst = ft_lst_setup_a(ac, av);
     ft_indexing(&lst);
-    ft_print_lst_index(lst);
+    //ft_print_lst_all(lst, lst1);
     lst1 = NULL;
     current = lst; /*
     printf("Combien plus petit? %d\n", ft_posinlist(lst, 5));

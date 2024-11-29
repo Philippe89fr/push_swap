@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 12:54:11 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/27 12:00:53 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:03:32 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int ft_check_ifdoneB(t_list *lst)
 {
     t_list *current;
 
-    current = lst;
+	current = lst;
     while (current->next && (current->content > current->next->content))
         current = current->next;
     if (!current->next)

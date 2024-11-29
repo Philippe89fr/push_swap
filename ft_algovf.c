@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_algo3.c                                         :+:      :+:    :+:   */
+/*   ft_algovf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:14:21 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/28 12:03:23 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/29 12:15:08 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,29 @@ int    ft_push_back_max(t_list **lst, t_list **lst1)
     size = ft_lstsize(*lst1);
     position = ft_position_vs_max(*lst1);
     sec_position = ft_position_vs_sec_max(currentB);
-    if (size == 1)
+    if (size == 1) // Quand le premier est en position 0
     {
         ft_push(lst1, lst);
         i++;
-    } 
-    else if (position == 1 && sec_position > position)
+    }
+    /*
+    else if (position == 1) // si le second est plus loin 
+    {
+        if ((size - sec_position) < sec_position && sec_position != 0) 
+        {
+            ft_rotate(lst1);
+            ft_push(lst1, lst);
+            i = i + 2;
+        }
+        else
+        {
+            ft_swap(lst1);
+            ft_push(lst1, lst);
+            i = i + 2;
+        }
+    }
+    */
+    else if (position == 1) // Quand le premier est en position 1
     {
         ft_swap(lst1);
         ft_push(lst1, lst);
@@ -170,7 +187,7 @@ int ft_pushbackall(t_list **lst, t_list **lst1)
     return res;
 }
 
-void ft_algo(t_list **lst, t_list **lst1)
+int ft_algo(t_list **lst, t_list **lst1)
 {
     t_list *current;
     t_list *currentB;
@@ -180,37 +197,17 @@ void ft_algo(t_list **lst, t_list **lst1)
     current = *lst;
     currentB = *lst1;
     if (ft_check_ifdone(current))
-        return; 
+        return (0); 
     printf("///GO\\\\n");
-    /*
-    ft_print_lst_all(current, currentB);
-    printf("La position du MAX est: %d\n", ft_position_vs_max(currentB));
-    printf("La position du MAX est: %d\n", ft_position_vs_sec_max(currentB)); 
-    printf("POST pushallA, lst:\n");
-    ft_print_lst_all(current, currentB);
-    printf("La position du MAX est: %d\n", ft_position_vs_max(currentB));
-    printf("La position du SEC_MAX est: %d\n", ft_position_vs_sec_max(currentB));
-    printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
-    */
+    // //ft_print_lst_all(current, currentB);
     count = count + ft_pushallA(&current, &currentB); // on balance tous les > med vers b
+    printf("POST pushallA, lst:\n");
+    // //ft_print_lst_all(current, currentB);
+    printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
     count = count + ft_pushbackall(&current, &currentB);
-    //ft_print_lst_all(current, currentB);
+    // //ft_print_lst_all(current, currentB); 
     printf("Le nombre d actions est de >> %d\n", count);
-
-/*
-    printf("Le nombre d actions est de >> %d\n", count);
-    count = count + ft_push_back_max(&current, &currentB);
-        //printf("la position du max est %d\n", ft_position_vs_max(currentB));
-    printf("Debut de PUSHBACK, lst:\n");
-    printf("La position du MAX est: %d\n", ft_position_vs_max(currentB));
-    count = count + ft_push_back_max(&current, &currentB);
-    ft_print_lst_all(current, currentB);
-    printf("Le nombre d actions est de >> %d apres push 1\n", count);
-    count = count + ft_push_back_max(&current, &currentB);
-    ft_print_lst_all(current, currentB);
-    printf("Le nombre d actions est de >> %d apres push 2\n", count);
-    count = count + ft_push_back_max(&current, &currentB);
-    //ft_push(&currentB, &current);
-    ft_print_lst_all(current, currentB); */
+    printf("C' est OK? >> %d\n\n\n", ft_check_ifdone(current));
+    return (count);
 } 
 

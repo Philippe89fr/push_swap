@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 11:45:24 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/27 14:33:56 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/29 10:20:42 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,5 +191,5 @@ void ft_algo(t_list **lst, t_list **lst1)
     ft_print_lst_all(current, currentB); 
 
     printf("Le nombre d actions est de >> %d\n", count);
-
+    printf("C' est OK? >> %d", ft_check_ifdone(current));
 } 

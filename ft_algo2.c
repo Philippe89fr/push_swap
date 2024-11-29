@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 15:14:21 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/29 17:13:22 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:13:24 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,10 @@ int ft_pushalla0_4(t_list **lst, t_list **lst1)
     if ((*lst)->decile <= 0.2) // les 0.2 sont mis au dessus
     {
         ft_pusha(lst, lst1);
-        if ((*lst)->decile > 0.4)
-             ft_rotatea(lst); //RR !! Si le prochain allait devoir etre rotate, on le rotate maintenant pour save un move
-        ft_rotateb(lst1);
+        if ((*lst)->decile > 0.4) //RR !! Si le prochain allait devoir etre rotate, on le rotate maintenant pour save un move
+             ft_rotatea_b(lst, lst1);
+        else
+            ft_rotateb(lst1);
         res = res +2;
     }
     else if ((*lst)->decile <= 0.4) 
@@ -98,9 +99,10 @@ int ft_pushalla0_8(t_list **lst, t_list **lst1)
     else if ((*lst)->decile <= 0.8) // les 0.8 sont mis au dessus
     {
         ft_pusha(lst, lst1);
-        ft_rotateb(lst1);
         if ((*lst)->decile > 0.8) //RR !! Si le prochain allait devoir etre rotate, on le rotate maintenant pour save un move
-             ft_rotatea(lst);
+             ft_rotatea_b(lst, lst1);
+        else
+            ft_rotateb(lst1);
         res = res +2;
     }
     else
@@ -190,7 +192,6 @@ int ft_algo(t_list **lst, t_list **lst1)
     currentB = *lst1;
     if (ft_check_ifdone(current))
         return (0);
-    printf("///GO2\\\\n");
     count = count + ft_pushallA(&current, &currentB); // on balance tous les > med vers b
     printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
     count = count + ft_pushbackall(&current, &currentB);

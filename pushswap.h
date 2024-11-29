@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 13:03:06 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/29 16:55:15 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/29 17:20:57 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int    ft_swapb(t_list **lst);
 int    ft_rotateb(t_list **lst);
 int    ft_reverseb(t_list **lst);
 int    ft_pushb(t_list **lst, t_list **lst1);
+int ft_rotatea_b(t_list **lst, t_list **lst1);
 
 #endif

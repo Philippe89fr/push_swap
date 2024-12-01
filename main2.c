@@ -6,11 +6,11 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:44:02 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/29 15:26:46 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:25:07 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "./srcs/pushswap.h"
 
 int main(int ac, char **av)
 {
@@ -237,6 +237,8 @@ char *str10[] = {
    // ft_print_lst_all(lst10, lstb10);
     res = res / 11;
     printf("Moyenne de %d\n", res);
+    printf("%d\n", ft_atoi("--3"));
+    printf("%d\n", ft_check_if_double(lst10));
 
     /*
     t_list *lst11;

@@ -14,7 +14,7 @@
 
 int ft_swapa(t_list **lst)
 {
-    int temp;
+    long long temp;
     double temp1;
     int temp2;
 
@@ -29,13 +29,13 @@ int ft_swapa(t_list **lst)
     temp2 = (*lst)->index;
     (*lst)->index = (*lst)->next->index;
     (*lst)->next->index = temp2;
- //   ft_printf("sa\n");
+    ft_printf("sa\n");
     return (1);
 }
 
 int ft_swapb(t_list **lst)
 {
-    int temp;
+    long long temp;
     double temp1;
     int temp2;
 
@@ -50,7 +50,7 @@ int ft_swapb(t_list **lst)
     temp2 = (*lst)->index;
     (*lst)->index = (*lst)->next->index;
     (*lst)->next->index = temp2;
-  //  ft_printf("sb\n");
+    ft_printf("sb\n");
     return (1);
 }
 
@@ -66,7 +66,7 @@ int ft_rotatea(t_list **lst)
     first->next = NULL; // deco le noeud
     current = ft_lstlast(*lst); // va sur le dernier
     current->next = first; // met le premier a la fin
- //   ft_printf("ra\n");
+    ft_printf("ra\n");
     return (1);
 }
 
@@ -82,7 +82,7 @@ int ft_rotateb(t_list **lst)
     first->next = NULL; // deco le noeud
     current = ft_lstlast(*lst); // va sur le dernier
     current->next = first; // met le premier a la fin
- //   ft_printf("rb\n");
+    ft_printf("rb\n");
     return (1);
 }
 
@@ -108,6 +108,6 @@ int ft_rotatea_b(t_list **lst, t_list **lst1)
     first1->next = NULL; // deco le noeud
     current1 = ft_lstlast(*lst1); // va sur le dernier
     current1->next = first1; // met le premier a la fin
- //   ft_printf("rr\n");
+    ft_printf("rr\n");
     return (2);
 }

@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:33:39 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/30 16:24:21 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:43:49 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,61 @@ int ft_check_if_double(t_list *lst)
             current1 = current1->next;
         }
         current = current->next;
+    }
+    return (1);
+}
+
+//check s il y a que des nombres
+int ft_check_isnumbers(char **tab)
+{
+    int	i;
+	int	j;
+    int k;
+
+    k = ((i = ((j = 0))));
+    while (tab[k])
+    {
+        while (tab[k][j])
+            j++;
+        while (tab[k][i] == ' ' || (tab[k][i] <= 13 && tab[k][i] >= 9))
+            i++;
+        if (tab[k][i] == '+' || tab[k][i] == '-')
+            i++;
+        while (tab[k][i] <= '9' && tab[k][i] >= '0')
+            i++;
+        if (j != i)
+            return (0);
+        k++;
+        j = 0;
+        i = 0;
+    }
+    return (1);
+}
+
+//check s il y a que des nombres, dans le cas ou on utilise av (il faut enlever av[0])
+int ft_check_isnumbers2(char **tab)
+{
+    int	i;
+	int	j;
+    int k;
+
+    k = 1;
+    i = ((j = 0));
+    while (tab[k])
+    {
+        while (tab[k][j])
+            j++;
+        while (tab[k][i] == ' ' || (tab[k][i] <= 13 && tab[k][i] >= 9))
+            i++;
+        if (tab[k][i] == '+' || tab[k][i] == '-')
+            i++;
+        while (tab[k][i] <= '9' && tab[k][i] >= '0')
+            i++;
+        if (j != i)
+            return (0);
+        k++;
+        j = 0;
+        i = 0;
     }
     return (1);
 }

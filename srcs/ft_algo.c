@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 14:31:40 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/30 15:48:21 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 13:47:58 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,13 @@ int ft_algo(t_list **lst, t_list **lst1)
     currentB = *lst1;
     if (ft_check_ifdone(current))
         return (0);
-    count = count + ft_pushallA(&current, &currentB); // on balance tous les > med vers b
-    printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
+    count = count + ft_pushallA20(&current, &currentB); // on balance tous les > med vers b
+    //printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
+    //ft_print_lst_all(current, currentB);
     count = count + ft_pushbackall(&current, &currentB);
-    // //ft_print_lst_all(current, currentB); 
+    ft_print_lst_all(current, currentB); 
     printf("Le nombre d actions est de >> %d\n", count);
-    printf("C' est OK? >> %d\n\n\n", ft_check_ifdone(current));
+    printf("C' est OK? >> %d\n\n", ft_check_ifdone(current));
     return (count);
 } 
 

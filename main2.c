@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:44:02 by vincent           #+#    #+#             */
-/*   Updated: 2024/11/30 16:25:07 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 11:13:55 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(int ac, char **av)
     int res;
 
     res = 0;
-    
+    /*   
     char *str[] = {"579", "533", "322", "819", "794", "946", "943", "247", "746", "517", "926", "395", "391", "128", "784", "120", "735", "95", "467", "315",
     "761", "240", "74", "39", "719", "303", "168", "544", "855", "602",
     "681", "954", "145", "134", "233", "25", "575", "788", "804", "793",
@@ -237,16 +237,20 @@ char *str10[] = {
    // ft_print_lst_all(lst10, lstb10);
     res = res / 11;
     printf("Moyenne de %d\n", res);
-    printf("%d\n", ft_atoi("--3"));
-    printf("%d\n", ft_check_if_double(lst10));
-
-    /*
+*/
+    
     t_list *lst11;
     t_list *lstb11;
-    lst11 = ft_lst_setup_a(ac, av);
-    ft_indexing(&lst11);
+
+    
+    // lst11 = ft_lst_setup_a(ac, av);
+    // 
+    lst11 = ft_lst_setup_a3(ac, av);
     lstb11 = NULL;
+    ft_indexing(&lst11);
+    //ft_print_lst_all(lst11, lstb11);
     ft_algo(&lst11, &lstb11); 
-    //ft_print_lst_all(lst11, lstb11); */
+   // ft_print_lst_all(lst11, lstb11);
+
     return (0);
 } 

@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: prambaud <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:15:06 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/08 18:28:03 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:45:07 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <stdio.h>
 
-int	ft_atoi(const char *nptr)
+long long	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	j;
-	int	nb;
+	long long nb;
 
 	i = 0;
 	j = 0;
@@ -45,7 +45,7 @@ int	main (int argc, char **argv)
 	char	*str = argv[1];
 
 	argc = argc + 0;
-	printf("%d\n", ft_atoi(str));
+	printf("%lld\n", ft_atoi(str));
 	printf("%d\n", atoi(str));
 	return (0);
 } */

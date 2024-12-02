@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pushall_a.c                                     :+:      :+:    :+:   */
+/*   ft_pushall_a5.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:23:16 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/30 15:24:03 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:40:39 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int ft_pushalla0_8(t_list **lst, t_list **lst1)
     return (res);
 }
 
-int ft_pushallA(t_list **lst, t_list **lst1) // on balance tous lvers b, en 4 groupes trie. Le but est d avoir les plus gros en bas.
+int ft_pushallA5(t_list **lst, t_list **lst1) // on balance tous lvers b, en 5 groupes trie. Le but est d avoir les plus gros en bas.
 { 
     int res;
 

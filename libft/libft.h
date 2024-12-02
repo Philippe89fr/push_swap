@@ -6,17 +6,16 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 09:54:18 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/30 15:02:30 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 09:52:34 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <string.h>
 # include <stdio.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 int					ft_printf(const char *s, ...);
 int					ft_sizeint(int nb);
@@ -26,7 +25,7 @@ int					ft_putnbru(unsigned int nb, int k);
 int					ft_printhex(unsigned int nb, int k);
 int					ft_printhexx(unsigned int nb, int k);
 int					ft_printpointer(void *p);
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 int					ft_isalnum(int c);
@@ -52,8 +51,8 @@ size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
 char				**ft_split(char const *s, char c);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-char				*ft_strnstr(const char *haystack,
-						const char *needle, size_t len);
+char				*ft_strnstr(const char *haystack, const char *needle,
+						size_t len);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
@@ -61,15 +60,15 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-void				ft_striteri(char *s, void (*f)(unsigned int, char*));
+void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 typedef struct s_list
 {
-	int					content;
-	int					index;
-	double				decile;
-	struct s_list			*next;
+	long long		content;
+	int				index;
+	double			decile;
+	struct s_list	*next;
 }					t_list;
-t_list				*ft_lstnew(int content);
+t_list				*ft_lstnew(long long content);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstlast(t_list *lst);

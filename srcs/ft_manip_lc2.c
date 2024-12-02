@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 14:31:12 by prambaud          #+#    #+#             */
-/*   Updated: 2024/11/30 15:29:40 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 10:54:49 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int ft_check_ifdone(t_list *lst)
     t_list *current;
 
     current = lst;
+    if (!lst)
+        return (1);
     while (current->next && (current->content < current->next->content))
         current = current->next;
     if (!current->next)
@@ -41,7 +43,7 @@ int ft_reversea(t_list **lst)
     second_last->next = NULL; // le nouveau dernier est NUllifié
     last->next = *lst; // met l ancient dernier au debut
     *lst = last; // remet le pointeur au debut
-    //ft_printf("rra\n");
+    ft_printf("rra\n");
     return (1);
 }
 
@@ -61,7 +63,7 @@ int ft_reverseb(t_list **lst)
     second_last->next = NULL; // le nouveau dernier est NUllifié
     last->next = *lst; // met l ancient dernier au debut
     *lst = last; // remet le pointeur au debut
-  //  ft_printf("rrb\n");
+    ft_printf("rrb\n");
     return (1);
 }
 
@@ -83,7 +85,7 @@ int ft_pushb(t_list **lst, t_list **lst1)
         first->next = *lst1; // branche à B
         *lst1 = first; // Fait pointer au nouveau debut de B
     }
-   // ft_printf("pb\n");
+   ft_printf("pb\n");
    return (1);
 }
 
@@ -105,6 +107,6 @@ int ft_pusha(t_list **lst, t_list **lst1)
         first->next = *lst1; // branche à B
         *lst1 = first; // Fait pointer au nouveau debut de B
     }
-    //  ft_printf("pa\n");
+      ft_printf("pa\n");
     return (1);
 }

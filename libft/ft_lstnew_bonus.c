@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:13:32 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/02 09:52:51 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:39:14 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ t_list	*ft_lstnew(long long content)
 {
 	t_list	*new;
 
-	new = (t_list *)malloc(sizeof(t_list));
+	new = malloc(sizeof(t_list));
 	if (new == NULL)
 		return (NULL);
 	new->content = content;
+	new->index = 0;
+    new->decile = 0.0;
 	new->next = NULL;
 	return (new);
 }

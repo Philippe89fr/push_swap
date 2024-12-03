@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 14:31:12 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/02 10:54:49 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/03 14:28:36 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int ft_pushb(t_list **lst, t_list **lst1)
         first->next = *lst1; // branche à B
         *lst1 = first; // Fait pointer au nouveau debut de B
     }
-   ft_printf("pb\n");
+   ft_printf("pa\n");
    return (1);
 }
 
@@ -107,6 +107,6 @@ int ft_pusha(t_list **lst, t_list **lst1)
         first->next = *lst1; // branche à B
         *lst1 = first; // Fait pointer au nouveau debut de B
     }
-      ft_printf("pa\n");
+    ft_printf("pb\n");
     return (1);
 }

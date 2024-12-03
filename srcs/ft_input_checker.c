@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:33:39 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/02 13:43:49 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/02 15:56:51 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int ft_check_isnumbers(char **tab)
             i++;
         while (tab[k][i] <= '9' && tab[k][i] >= '0')
             i++;
-        if (j != i)
+        if (j != i || (tab[k][0] == '-' && tab[k][1] == '\0') || (tab[k][0] == '+' && tab[k][1] == '\0'))
             return (0);
         k++;
         j = 0;
@@ -95,7 +95,7 @@ int ft_check_isnumbers2(char **tab)
             i++;
         while (tab[k][i] <= '9' && tab[k][i] >= '0')
             i++;
-        if (j != i)
+        if (j != i || (tab[k][0] == '-' && tab[k][1] == '\0') || (tab[k][0] == '+' && tab[k][1] == '\0'))
             return (0);
         k++;
         j = 0;

@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
+/*   main2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:04:27 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/03 11:37:39 by prambaud         ###   ########.fr       */
+/*   Created: 2024/11/25 10:44:02 by vincent           #+#    #+#             */
+/*   Updated: 2024/12/03 16:24:27 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int main(int ac, char **av)
 {
-	t_list	*sec_last;
+    int res;
 
-	if (!lst || !new)
-		return ;
-	if (*lst == NULL)
-	{
-		*lst = new;
-		return ;
-	}
-	sec_last = ft_lstlast(*lst);
-	sec_last->next = new;
-}
+    res = 0;
+    t_list *lst11;
+    t_list *lstb11;
+
+    lst11 = ft_lst_setup_a3(ac, av);
+    lstb11 = NULL;
+    ft_indexing(&lst11);
+    ft_algo(&lst11, &lstb11);
+    ft_lstclear(&lst11);
+    ft_lstclear(&lstb11);
+    return (0);
+} 

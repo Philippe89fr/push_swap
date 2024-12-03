@@ -6,11 +6,11 @@
 #    By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 17:01:53 by prambaud          #+#    #+#              #
-#    Updated: 2024/12/02 13:19:00 by prambaud         ###   ########.fr        #
+#    Updated: 2024/12/03 13:56:19 by prambaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME        = pushswap.a
+NAME        = push_swap
 LIBFT       = libft/libft.a
 SRCS          = ./libft/ft_memcpy.c \
 		./libft/ft_calloc.c \
@@ -69,28 +69,32 @@ SRCS          = ./libft/ft_memcpy.c \
 		./srcs/ft_manip_lc2.c \
 		./srcs/ft_manip_lc3.c \
 		./srcs/ft_algo.c \
-		./srcs/ft_algo_tools.c \
+		./srcs/ft_pushall_a_small.c \
 		./srcs/ft_pushall_a5.c \
 		./srcs/ft_pushall_a6.c \
 		./srcs/ft_pushall_a12.c \
 		./srcs/ft_pushall_a16.c \
 		./srcs/ft_pushall_a18.c \
 		./srcs/ft_pushall_a20.c \
+		./srcs/ft_pushall_a22.c \
 		./srcs/ft_input_checker.c \
+		./srcs/main2.c \
         
 OBJS        = ${SRCS:.c=.o}
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra -Werror -g3
 MAKE        = make
 CLEAN       = make clean
 FCLEAN      = make fclean
 RM          = rm -rf
 
+# Règle de construction pour le fichier binaire
+${NAME}:${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+
+# Règle pour transformer .c en .o
 .c.o:
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
-
-${NAME}:${OBJS}
-	ar -rcs ${NAME} ${OBJS}
 
 all:    ${NAME}
 

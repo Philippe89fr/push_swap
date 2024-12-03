@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/22 14:54:18 by vincent           #+#    #+#             */
-/*   Updated: 2024/12/02 13:43:38 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/03 13:02:03 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,37 @@ void	ft_indexing(t_list **lst)
 t_list	*ft_lst_setup_a(int ac, char **av)
 {
 	t_list	*lst;
+	t_list *new_node;
 	int		i;
 
-	i = 2;
-	lst = ft_lstnew(ft_atoi(av[1]));
+	i = 1;
+	lst = NULL;
 	while (i < ac)
 	{
-		ft_lstadd_back(&lst, ft_lstnew(ft_atoi(av[i])));
-		i++;
+		new_node = ft_lstnew(ft_atoi(av[i])); // Crée un nouveau nœud
+        if (!new_node) // Vérifie si l'allocation a échoué
+        {
+            ft_lstclear(&lst); // Libère les nœuds déjà créés
+            return (NULL);
+        }
+        ft_lstadd_back(&lst, new_node); // Ajoute le nœud à la fin de la liste
+        i++;
 	}
 	return (lst);
 }
 
+void	ft_liberator(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 // set up combo $>ARG="4 67 3 87 23"; et $>ARG= 4 67 3 87 23; sans les ""
 t_list	*ft_lst_setup_a3(int ac, char **av)
 {
@@ -62,28 +81,31 @@ t_list	*ft_lst_setup_a3(int ac, char **av)
 	int		i;
 
 	i = 0;
-	if (ac == 2)
+	if (ac == 1)
+		return (NULL);
+	else if (ac == 2)
 	{
 		tab = ft_split(av[1], ' ');
 		if (!ft_check_isnumbers(tab))
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			return (NULL);
 		}
 		lst = ft_lst_setup_a2(tab);
+		ft_liberator(tab); // liberator
 	}
 	else 
 	{
 		if (!ft_check_isnumbers2(av))
 		{
-			ft_printf("Error\n");
+			write(2, "Error\n", 6);
 			return (NULL);
 		}
 		lst = ft_lst_setup_a(ac, av);
 	}
 	if (!ft_check_if_double(lst) || !ft_check_if_int_max_min(lst))
 	{
-		ft_printf("Error\n");
+		write(2, "Error\n", 6);
 		return (NULL);
 	}
 	return (lst);
@@ -109,17 +131,17 @@ t_list	*ft_lst_setup_a2(char **str)
 	return (lst);
 }
 
-t_list	*ft_lst_setup_b(int ac)
-{
-	t_list *lst;
-	int i;
+// t_list	*ft_lst_setup_b(int ac)
+// {
+// 	t_list *lst;
+// 	int i;
 
-	i = 2;
-	lst = ft_lstnew('\0');
-	while (i < ac)
-	{
-		ft_lstadd_back(&lst, ft_lstnew('\0'));
-		i++;
-	}
-	return (lst);
-}
+// 	i = 2;
+// 	lst = ft_lstnew('\0');
+// 	while (i < ac)
+// 	{
+// 		ft_lstadd_back(&lst, ft_lstnew('\0'));
+// 		i++;
+// 	}
+// 	return (lst);
+// }

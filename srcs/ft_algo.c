@@ -6,20 +6,20 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 14:31:40 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/02 13:47:58 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/03 16:42:01 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 #include "../libft/libft.h"
 
-void ft_swap_if_sorted(t_list **lst) // swaper si dans l ordre croissant pour rendre B le plus decroissant possible // NOT USED
-{
-    if (!lst || !(*lst)->next)
-        return ;
-    if ((*lst)->index < (*lst)->next->index)
-        ft_swapb(lst);
-}
+// void ft_swap_if_sorted(t_list **lst) // swaper si dans l ordre croissant pour rendre B le plus decroissant possible // NOT USED
+// {
+//     if (!lst || !(*lst)->next)
+//         return ;
+//     if ((*lst)->index < (*lst)->next->index)
+//         ft_swapb(lst);
+// }
 
 int    ft_push_back_max(t_list **lst, t_list **lst1)
 {
@@ -62,22 +62,26 @@ int ft_pushbackall(t_list **lst, t_list **lst1)
 
 int ft_algo(t_list **lst, t_list **lst1)
 {
-    t_list *current;
-    t_list *currentB;
     int count;
 
     count = 0;
-    current = *lst;
-    currentB = *lst1;
-    if (ft_check_ifdone(current))
+    if (ft_check_ifdone(*lst))
         return (0);
-    count = count + ft_pushallA20(&current, &currentB); // on balance tous les > med vers b
-    //printf("Le nombre d actions apres le PUSHA est de >> %d\n", count);
-    //ft_print_lst_all(current, currentB);
-    count = count + ft_pushbackall(&current, &currentB);
-    ft_print_lst_all(current, currentB); 
-    printf("Le nombre d actions est de >> %d\n", count);
-    printf("C' est OK? >> %d\n\n", ft_check_ifdone(current));
+    if (ft_lstsize(*lst) == 3)
+        return (count + ft_sort_small3(lst)); // pas besoin de push dans B et inversement
+    else if (ft_lstsize(*lst) == 4)
+        return (count + ft_sort_small4(lst, lst1)); // pas besoin de push dans B et inversement
+    else if (ft_lstsize(*lst) == 5)
+        return (count + ft_sort_small5(lst, lst1));
+    else if (ft_lstsize(*lst) < 150)
+        count = count + ft_pushallA6(lst, lst1); // on balance tous les > med vers b
+    else if (ft_lstsize(*lst) < 300)
+        count = count + ft_pushallA16(lst, lst1); // on balance tous les > med vers b
+    else if (ft_lstsize(*lst) < 550)
+        count = count + ft_pushallA18(lst, lst1); // on balance tous les > med vers b
+    else 
+        count = count + ft_pushallA20(lst, lst1); // on balance tous les > med vers b
+    count = count + ft_pushbackall(lst, lst1);
     return (count);
 } 
 

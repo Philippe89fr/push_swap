@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 13:03:06 by vincent           #+#    #+#             */
-/*   Updated: 2024/12/03 10:58:28 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/03 17:33:51 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,11 @@ int		ft_check_ifdoneB(t_list *lst);
 int		ft_check_if_med(t_list *lst, int med);
 int		ft_pushalla0_4(t_list **lst, t_list **lst1);
 int		ft_pushalla0_8(t_list **lst, t_list **lst1);
-int		ft_pushallA2(t_list **lst, t_list **lst1);
-int		ft_pushallA5(t_list **lst, t_list **lst1);
-int		ft_pushallA6(t_list **lst, t_list **lst1);
-int		ft_pushallA12(t_list **lst, t_list **lst1);
-int		ft_pushallA16(t_list **lst, t_list **lst1);
-int		ft_pushallA18(t_list **lst, t_list **lst1);
-int		ft_pushallA20(t_list **lst, t_list **lst1);
-int		ft_pushallA22(t_list **lst, t_list **lst1);
-int     ft_sort_small3(t_list **lst);
-int     ft_sort_small4(t_list **lst, t_list **lst1);
-int     ft_sort_small5(t_list **lst, t_list **lst1);
+int		ft_pushalla6(t_list **lst, t_list **lst1);
+int		ft_pushalla18(t_list **lst, t_list **lst1);
+int		ft_sort_small3(t_list **lst);
+int		ft_sort_small4(t_list **lst, t_list **lst1);
+int		ft_sort_small5(t_list **lst, t_list **lst1);
 int		ft_algo(t_list **lst, t_list **lst1);
 t_list	*ft_lst_setup_a(int ac, char **av);
 void	ft_lstadd_back(t_list **lst, t_list *new);
@@ -65,5 +59,10 @@ int		ft_check_if_double(t_list *lst);
 t_list	*ft_lst_setup_a3(int ac, char **av);
 int		ft_check_isnumbers(char **tab);
 int		ft_check_isnumbers2(char **tab);
+int		ft_pushalla0_111(t_list **lst, t_list **lst1);
+int		ft_pushalla0_222(t_list **lst, t_list **lst1);
+int		ft_pushalla0_334(t_list **lst, t_list **lst1);
+int		ft_pushalla0_445(t_list **lst, t_list **lst1);
+int		ft_pushalla0_556(t_list **lst, t_list **lst1);
 
 #endif

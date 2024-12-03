@@ -6,7 +6,7 @@
 #    By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/13 17:01:53 by prambaud          #+#    #+#              #
-#    Updated: 2024/12/03 13:56:19 by prambaud         ###   ########.fr        #
+#    Updated: 2024/12/03 17:34:10 by prambaud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,13 +70,9 @@ SRCS          = ./libft/ft_memcpy.c \
 		./srcs/ft_manip_lc3.c \
 		./srcs/ft_algo.c \
 		./srcs/ft_pushall_a_small.c \
-		./srcs/ft_pushall_a5.c \
 		./srcs/ft_pushall_a6.c \
-		./srcs/ft_pushall_a12.c \
-		./srcs/ft_pushall_a16.c \
-		./srcs/ft_pushall_a18.c \
-		./srcs/ft_pushall_a20.c \
-		./srcs/ft_pushall_a22.c \
+		./srcs/ft_pushall_a18a.c \
+		./srcs/ft_pushall_a18b.c \
 		./srcs/ft_input_checker.c \
 		./srcs/main2.c \
         

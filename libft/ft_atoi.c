@@ -6,18 +6,18 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 13:15:06 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/02 09:45:07 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:48:58 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 long long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	j;
-	long long nb;
+	int			i;
+	int			j;
+	long long	nb;
 
 	i = 0;
 	j = 0;

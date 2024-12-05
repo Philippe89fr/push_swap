@@ -6,11 +6,30 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 10:44:02 by vincent           #+#    #+#             */
-/*   Updated: 2024/12/03 17:54:16 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:20:23 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+t_list	*ft_if_error(void)
+{
+	write(2, "Error\n", 6);
+	return (NULL);
+}
+
+void	ft_liberator(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 int	main(int ac, char **av)
 {

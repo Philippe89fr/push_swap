@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 13:03:06 by vincent           #+#    #+#             */
-/*   Updated: 2024/12/03 17:33:51 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:36:38 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <unistd.h>
 
 void	ft_print_lst_decile(t_list *lst);
+int		verif_entry(int ac, char **tab);
+void	ft_liberator(char **tab);
+t_list	*ft_if_error(void);
 int		ft_posinlist(t_list *lst, int val);
 void	ft_print_lst_all(t_list *lst, t_list *lst1);
 void	ft_print_lst_all1(t_list *lst1);

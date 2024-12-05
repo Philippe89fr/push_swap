@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:33:39 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/03 17:23:26 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:36:44 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,33 @@ int	ft_check_isnumbers2(char **tab)
 		i = 0;
 	}
 	return (1);
+}
+
+int	verif_entry(int ac, char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 1;
+	if (ac == 2)
+		i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+		{
+			if (tab[i][j] == '-' && j == 0)
+				j++;
+			if (!tab[i][j] || tab[i][j] < '0' || tab[i][j] > '9')
+				return (-1);
+			j++;
+		}
+		if ((j == 11 && tab[i][0] != '-') || (j > 11) || (j == 11
+				&& ft_strncmp("-2147483648", tab[i], 11) == -1))
+			return (-1);
+		if ((j == 10 && ft_strncmp("2147483647", tab[i], 10) == -1))
+			return (-1);
+		i++;
+	}
+	return (i);
 }

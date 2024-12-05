@@ -78,7 +78,7 @@ SRCS          = ./libft/ft_memcpy.c \
         
 OBJS        = ${SRCS:.c=.o}
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror -g3
+CFLAGS      = -Wall -Wextra -Werror
 MAKE        = make
 CLEAN       = make clean
 FCLEAN      = make fclean

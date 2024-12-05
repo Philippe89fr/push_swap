@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/29 18:29:02 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/03 17:27:37 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:13:18 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	ft_print_lst_all(t_list *lst, t_list *lst1)
 	ft_printf("List A, lst:\n");
 	while (current)
 	{
-		ft_printf("La valeur est %lld, l index est: %d et le decile: %.2f\n",
+		printf("La valeur est %lld, l index est: %d et le decile: %.2f\n",
 			current->content, current->index, current->decile);
 		current = current->next;
 	}
 	ft_printf("List B, lst:\n");
 	while (currentb)
 	{
-		ft_printf("La valeur est %lld, l index est: %d et le decile: %.2f\n",
+		printf("La valeur est %lld, l index est: %d et le decile: %.2f\n",
 			currentb->content, currentb->index, currentb->decile);
 		currentb = currentb->next;
 	}

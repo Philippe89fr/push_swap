@@ -6,7 +6,7 @@
 /*   By: prambaud <prambaud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 10:13:32 by prambaud          #+#    #+#             */
-/*   Updated: 2024/12/03 16:39:14 by prambaud         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:48:44 by prambaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_list	*ft_lstnew(long long content)
 		return (NULL);
 	new->content = content;
 	new->index = 0;
-    new->decile = 0.0;
+	new->decile = 0.0;
 	new->next = NULL;
 	return (new);
 }
